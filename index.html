@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Poetfolio — words, quietly arranged</title>
+    <meta
+      name="description"
+      content="A small studio of verse: commissions, readings, and printed work."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Syne:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="page-loader" class="page-loader" aria-hidden="true">
+      <div class="skeleton-layout">
+        <div class="skeleton-bar skeleton-bar--nav"></div>
+        <div class="skeleton-hero">
+          <div class="skeleton-bar skeleton-bar--title"></div>
+          <div class="skeleton-bar skeleton-bar--title skeleton-bar--short"></div>
+          <div class="skeleton-bar skeleton-bar--sub"></div>
+        </div>
+        <div class="skeleton-grid">
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+          <div class="skeleton-card"></div>
+        </div>
+      </div>
+    </div>
+
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <div class="site-header__inner">
+        <a class="logo" href="#top">poetfolio</a>
+        <button
+          type="button"
+          class="nav-toggle"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          aria-label="Open menu"
+        >
+          <span class="nav-toggle__line"></span>
+          <span class="nav-toggle__line"></span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Primary">
+          <a href="#selected">Selected work</a>
+          <a href="#craft">Craft</a>
+          <a href="#studio">Studio</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__bg" aria-hidden="true"></div>
+        <div class="hero__content">
+          <p class="hero__eyebrow reveal" data-reveal>Independent verse &amp; commissions</p>
+          <h1 id="hero-title" class="hero__title">
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">Words</span></span
+            >
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">held</span> <span class="word">in</span></span
+            >
+            <span class="stack-line reveal-line stack-line--accent" data-reveal-line
+              ><span class="word">still</span> <span class="word">air</span></span
+            >
+          </h1>
+          <p class="hero__lede reveal" data-reveal>
+            I write poems for pages, stages, and the thin space between breaths—always
+            my own lines, never borrowed light.
+          </p>
+          <div class="hero__actions reveal" data-reveal>
+            <a class="btn btn--primary" href="#selected">Read selected work</a>
+            <a class="btn btn--ghost" href="#contact">Start a conversation</a>
+          </div>
+        </div>
+        <div class="hero__scroll" aria-hidden="true">
+          <span>Scroll</span>
+          <span class="hero__scroll-line"></span>
+        </div>
+      </section>
+
+      <section class="section section--marquee" aria-hidden="true">
+        <div class="marquee">
+          <div class="marquee__track">
+            <span>sonnets · broadsides · readings · workshops ·</span>
+            <span>sonnets · broadsides · readings · workshops ·</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="selected" class="section section--work">
+        <header class="section__head">
+          <h2 class="section__title">
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">Selected</span></span
+            >
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">work</span></span
+            >
+          </h2>
+          <p class="section__intro reveal" data-reveal>
+            Three recent threads—each piece written for its occasion, then revised until
+            the silence after the last line feels honest.
+          </p>
+        </header>
+        <div class="card-grid">
+          <article class="work-card reveal" data-reveal>
+            <span class="work-card__meta">Broadside · 2025</span>
+            <h3 class="work-card__title">Ledger of small weather</h3>
+            <p class="work-card__text">
+              A winter sequence in twelve short movements, letterpress on cotton paper.
+            </p>
+            <span class="work-card__tag">Print</span>
+          </article>
+          <article class="work-card reveal" data-reveal>
+            <span class="work-card__meta">Commission · 2024</span>
+            <h3 class="work-card__title">The room remembers</h3>
+            <p class="work-card__text">
+              Verse for the reopening of a public library—spoken, then set in stone in
+              the foyer.
+            </p>
+            <span class="work-card__tag">Public</span>
+          </article>
+          <article class="work-card reveal" data-reveal>
+            <span class="work-card__meta">Chapbook · 2024</span>
+            <h3 class="work-card__title">Night errands</h3>
+            <p class="work-card__text">
+              Twenty poems about cities after closing time; hand-sewn edition of two
+              hundred.
+            </p>
+            <span class="work-card__tag">Book</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="craft" class="section section--split">
+        <div class="split__sticky">
+          <h2 class="section__title section__title--sticky">
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">How</span></span
+            >
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">the</span> <span class="word">work</span></span
+            >
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">is</span> <span class="word">made</span></span
+            >
+          </h2>
+        </div>
+        <div class="split__content">
+          <article class="step reveal" data-reveal>
+            <span class="step__n">01</span>
+            <h3 class="step__title">Listen</h3>
+            <p>
+              We begin with what the piece must do in the world—comfort, challenge,
+              dedicate, mark a threshold. No template; only listening.
+            </p>
+          </article>
+          <article class="step reveal" data-reveal>
+            <span class="step__n">02</span>
+            <h3 class="step__title">Draft in ink</h3>
+            <p>
+              First drafts stay on paper: slower lines, fewer clever escapes. The goal is
+              sound before polish.
+            </p>
+          </article>
+          <article class="step reveal" data-reveal>
+            <span class="step__n">03</span>
+            <h3 class="step__title">Revise in daylight</h3>
+            <p>
+              Cuts, bridges, and the occasional stubborn stanza that refuses to leave until
+              it earns its room.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section--stats" aria-labelledby="stats-title">
+        <h2 id="stats-title" class="visually-hidden">Studio in numbers</h2>
+        <div class="stats">
+          <div class="stat reveal" data-reveal>
+            <span class="stat__value" data-count="14">0</span>
+            <span class="stat__suffix">years</span>
+            <span class="stat__label">writing with intent</span>
+          </div>
+          <div class="stat reveal" data-reveal>
+            <span class="stat__value" data-count="3">0</span>
+            <span class="stat__suffix">languages</span>
+            <span class="stat__label">published in translation</span>
+          </div>
+          <div class="stat reveal" data-reveal>
+            <span class="stat__value" data-count="100">0</span>
+            <span class="stat__suffix">%</span>
+            <span class="stat__label">original lines—always</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="studio" class="section section--studio">
+        <div class="studio__panel reveal" data-reveal>
+          <h2 class="section__title">
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">The</span> <span class="word">studio</span></span
+            >
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">is</span> <span class="word">a</span> <span class="word">desk</span></span
+            >
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">by</span> <span class="word">a</span> <span class="word">window</span></span
+            >
+          </h2>
+          <p>
+            Mornings for correspondence, afternoons for line breaks. I take a handful of
+            commissions each season so every project gets room to breathe. If you need
+            language that lingers—ceremony, catalog, quiet protest—I would like to hear
+            what you are building.
+          </p>
+        </div>
+      </section>
+
+      <section id="contact" class="section section--contact">
+        <header class="section__head">
+          <h2 class="section__title">
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">Say</span></span
+            >
+            <span class="stack-line reveal-line" data-reveal-line
+              ><span class="word">hello</span></span
+            >
+          </h2>
+          <p class="section__intro reveal" data-reveal>
+            Share a few lines about your timeline and the heart of the piece. I reply
+            within a handful of days.
+          </p>
+        </header>
+        <form class="contact-form reveal" data-reveal id="contact-form" novalidate>
+          <label class="field">
+            <span class="field__label">Name</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label class="field">
+            <span class="field__label">Email</span>
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+          <label class="field field--full">
+            <span class="field__label">What are you dreaming up?</span>
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button type="submit" class="btn btn--primary btn--wide">Send message</button>
+          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner">
+        <p class="site-footer__copy">
+          © <span id="year"></span> Poetfolio. Crafted as a portfolio demo—copy is
+          original.
+        </p>
+        <nav class="site-footer__nav" aria-label="Footer">
+          <a href="#">Colophon</a>
+          <a href="#">Privacy</a>
+        </nav>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
