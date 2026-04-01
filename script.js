@@ -4,6 +4,11 @@
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var loader = document.getElementById("page-loader");
   var body = document.body;
+  var loadStarted = Date.now();
+
+  /** Time for prelude “dancing” (orbiting dots + wordmark) before the page activates */
+  var PRELUDE_MS = prefersReducedMotion ? 0 : 2400;
+  var MIN_LOAD_MS = 500;
 
   function hideLoader() {
     if (!loader) return;
@@ -16,23 +21,29 @@
     }, 600);
   }
 
-  function showLoaderMinThen(done) {
-    var start = Date.now();
-    var minMs = 900;
-    function finish() {
-      var elapsed = Date.now() - start;
-      var wait = Math.max(0, minMs - elapsed);
-      setTimeout(done, wait);
-    }
-    if (document.readyState === "complete") {
-      finish();
-    } else {
-      window.addEventListener("load", finish);
-    }
+  function activatePageThenHideLoader() {
+    body.classList.add("is-hero-ready");
+    requestAnimationFrame(function () {
+      setTimeout(function () {
+        hideLoader();
+        setTimeout(runHeroLines, prefersReducedMotion ? 0 : 140);
+      }, prefersReducedMotion ? 0 : 90);
+    });
+  }
+
+  function whenReadyToEnter() {
+    var elapsed = Date.now() - loadStarted;
+    var need = Math.max(MIN_LOAD_MS, PRELUDE_MS);
+    var wait = Math.max(0, need - elapsed);
+    setTimeout(activatePageThenHideLoader, wait);
   }
 
   body.classList.add("is-loading");
-  showLoaderMinThen(hideLoader);
+  if (document.readyState === "complete") {
+    whenReadyToEnter();
+  } else {
+    window.addEventListener("load", whenReadyToEnter);
+  }
 
   // Year in footer
   var yearEl = document.getElementById("year");
@@ -94,7 +105,7 @@
     io.observe(el);
   });
 
-  // Hero lines: animate after loader (stagger)
+  // Hero lines: run only after prelude + loader (see activatePageThenHideLoader)
   var heroLines = document.querySelectorAll(".hero [data-reveal-line]");
   function runHeroLines() {
     if (prefersReducedMotion) {
@@ -109,21 +120,13 @@
     heroLines.forEach(function (line, i) {
       setTimeout(function () {
         line.classList.add("is-inview");
-      }, 120 + i * 110);
+      }, 80 + i * 95);
     });
     document.querySelectorAll(".hero [data-reveal]").forEach(function (el, i) {
       setTimeout(function () {
         el.classList.add("is-inview");
-      }, 500 + i * 80);
+      }, 420 + i * 70);
     });
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", function () {
-      setTimeout(runHeroLines, 100);
-    });
-  } else {
-    setTimeout(runHeroLines, 100);
   }
 
   // Stats counter
