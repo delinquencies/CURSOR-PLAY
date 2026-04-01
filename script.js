@@ -9,6 +9,8 @@
   /** Time for prelude “dancing” (orbiting dots + wordmark) before the page activates */
   var PRELUDE_MS = prefersReducedMotion ? 0 : 2400;
   var MIN_LOAD_MS = 500;
+  /** Quipo-style hero: stagger between per-word line-mask wipes (ms) */
+  var HERO_WORD_STAGGER = 95;
 
   function hideLoader() {
     if (!loader) return;
@@ -105,27 +107,42 @@
     io.observe(el);
   });
 
-  // Hero lines: run only after prelude + loader (see activatePageThenHideLoader)
-  var heroLines = document.querySelectorAll(".hero [data-reveal-line]");
+  /** Mint line-mask on each .word (Quipo / Webflow pattern) */
+  function initHeroLineMasks() {
+    document.querySelectorAll(".hero .word-line .word").forEach(function (wordEl) {
+      if (wordEl.querySelector(".line-mask")) return;
+      var mask = document.createElement("span");
+      mask.className = "line-mask";
+      mask.setAttribute("aria-hidden", "true");
+      wordEl.appendChild(mask);
+    });
+  }
+
+  initHeroLineMasks();
+
+  var heroWordLines = document.querySelectorAll(".hero .word-line");
+
   function runHeroLines() {
     if (prefersReducedMotion) {
-      heroLines.forEach(function (line) {
-        line.classList.add("is-inview");
+      heroWordLines.forEach(function (line) {
+        line.classList.add("is-revealed");
       });
       document.querySelectorAll(".hero [data-reveal]").forEach(function (el) {
         el.classList.add("is-inview");
       });
       return;
     }
-    heroLines.forEach(function (line, i) {
+    heroWordLines.forEach(function (line, i) {
       setTimeout(function () {
-        line.classList.add("is-inview");
-      }, 80 + i * 95);
+        line.classList.add("is-revealed");
+      }, 60 + i * HERO_WORD_STAGGER);
     });
+    var maskMs = 820;
+    var afterMasks = 60 + heroWordLines.length * HERO_WORD_STAGGER + maskMs;
     document.querySelectorAll(".hero [data-reveal]").forEach(function (el, i) {
       setTimeout(function () {
         el.classList.add("is-inview");
-      }, 420 + i * 70);
+      }, afterMasks + i * 90);
     });
   }
 
